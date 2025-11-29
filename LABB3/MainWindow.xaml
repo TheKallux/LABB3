@@ -1,0 +1,40 @@
+﻿<Window x:Class="LABB3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:LABB3.Views"
+        mc:Ignorable="d"
+        d:Height="450" d:Width="800"
+        Title="MainWindow" Height="450" Width="800" FontSize="14">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <views:MenuView Grid.Row="0" x:Name="MenuView" />
+
+        <StackPanel Grid.Row="1" x:Name="MenuPanel"  HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Margin="0,-34,0,0">
+
+            <TextBlock Text="EL QUIZZO" HorizontalAlignment="Center"
+            VerticalAlignment="Top" Margin="0,54,0,50" FontSize="50" />
+
+            <Button Content="PLAY" Padding="20" Margin="5"
+                    Command="{Binding PlayCommand}" />
+
+            <Button Content="EDIT QUESTIONPACK" Padding="20" Margin="5"
+                    Command="{Binding EditQuestionPackCommand}" />
+
+            <Button Content="EXIT" Padding="20" Margin="5"
+                    Command="{Binding ExitCommand}" />
+        </StackPanel>
+
+        <views:PlayerView Grid.Row="1" x:Name="PlayerView" Visibility="Collapsed" />
+
+        <views:ConfigurationView Grid.Row="1" x:Name="ConfigurationView" Visibility="Collapsed" />
+    </Grid>
+</Window>
