@@ -48,7 +48,8 @@
                       Icon="{fa:Icon pentosquare}" />
             <Separator />
             <MenuItem Header="Fullscreen" InputGestureText="Alt+Enter"
-                      Icon="{fa:Icon expand}" />
+                      Icon="{fa:Icon expand}"
+                      Command="{Binding FullScreenCommand}"/>
         </MenuItem>
     </Menu>
 </UserControl>

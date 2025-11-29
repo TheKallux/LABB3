@@ -78,6 +78,7 @@ internal class MainWindowViewModel : ViewModelBase
     public DelegateCommand PlayCommand { get; set; }
     public DelegateCommand SelectPackCommand { get; set; }
     public DelegateCommand DeletePackCommand { get; set; }
+    public DelegateCommand FullScreenCommand { get ; set; }
 
 
     public PlayerViewModel? PlayerViewModel
@@ -100,6 +101,7 @@ internal class MainWindowViewModel : ViewModelBase
         EditQuestionPackCommand = new DelegateCommand(OnEdit);
         ExitCommand = new DelegateCommand(OnExit);
         CreateNewPackCommand = new DelegateCommand(OnCreateNewPack);
+        FullScreenCommand = new DelegateCommand(OnFullscreen);
 
         QuestionPacks = new ObservableCollection<QuestionPackViewModel>();
 
@@ -153,12 +155,50 @@ internal class MainWindowViewModel : ViewModelBase
 
     private void OnSelectPack(object? obj)
     {
+        if (QuestionPacks.Count == 0)
+        {
+            MessageBox.Show("No packs available!");
+            return;
+        }
 
+        var dialog = new SelectPackDialog(QuestionPacks.ToList());
+        if (dialog.ShowDialog() == true && dialog.SelectedPack != null)
+        {
+            ActivePack = dialog.SelectedPack;
+        }
     }
 
     private void OnDeletePack(object? obj)
     {
+        if (QuestionPacks.Count == 0)
+        {
+            MessageBox.Show("No packs available!");
+            return;
+        }
 
+        var dialog = new SelectPackDialog(QuestionPacks.ToList());
+        if (dialog.ShowDialog() == true && dialog.SelectedPack != null)
+        {
+            ActivePack = dialog.SelectedPack;
+        }
+    }
+
+    private void OnFullscreen(object? obj)
+    {
+        var mainWindow = Application.Current.MainWindow;
+        if (mainWindow != null)
+        {
+            if (mainWindow.WindowState == WindowState.Normal)
+            {
+                mainWindow.WindowState = WindowState.Maximized;
+                mainWindow.WindowStyle = WindowStyle.None;
+            }
+            else
+            {
+                mainWindow.WindowState = WindowState.Normal;
+                mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+        }
     }
 
     public void SetCurrentView(string view)
