@@ -60,11 +60,16 @@ internal class ConfigurationViewModel : ViewModelBase
 
     private void EditPackOptions(object? obj)
     {
-        var dialog = new PackOptionsDialog(ActivePack.Name, ActivePack.Difficulty.ToString());
+        var dialog = new PackOptionsDialog(
+            ActivePack.Name,
+            ActivePack.Difficulty.ToString(),
+            ActivePack.TimeLimitInSeconds);
+
         if (dialog.ShowDialog() == true)
         {
             ActivePack.Name = dialog.PackName;
             ActivePack.Difficulty = Enum.Parse<Difficulty>(dialog.SelectedDifficulty);
+            ActivePack.TimeLimitInSeconds = dialog.TimePerQuestion;
         }
     }
 

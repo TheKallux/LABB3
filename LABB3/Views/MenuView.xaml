@@ -32,20 +32,28 @@
         </MenuItem>
 
         <MenuItem Header="_Edit">
-            <MenuItem Header="Add Question"
-                      Icon="{fa:Icon plus}" />
-            <MenuItem Header="Remove Question" InputGestureText="Ctrl+R"
-                      Icon="{fa:Icon minus}" />
-            <MenuItem Header="Set PackName"
+            <MenuItem Header="Add Question" InputGestureText="Insert"
+                      Icon="{fa:Icon plus}"
+                      Command="{Binding ConfigurationViewModel.AddQuestionCommand}"/>
+            
+            <MenuItem Header="Remove Question" InputGestureText="Delete"
+                      Icon="{fa:Icon minus}"
+                      Command="{Binding ConfigurationViewModel.RemoveQuestionCommand}"/>
+                      
+            
+            <MenuItem Header="Pack Options" InputGestureText="Ctrl+O"
                       Icon="{fa:Icon pentosquare}"
-                      Command="{Binding PlayerViewModel.SetPackNameCommand}" />
+                      Command="{Binding ConfigurationViewModel.EditPackOptionsCommand}"/>
         </MenuItem>
 
         <MenuItem Header="_View">
             <MenuItem Header="_Play" InputGestureText="Ctrl+P"
-                      Icon="{fa:Icon play}" />
+                      Icon="{fa:Icon play}"
+                      Command="{Binding PlayCommand}"/>
+            
             <MenuItem Header="_Edit" InputGestureText="Ctrl+E"
-                      Icon="{fa:Icon pentosquare}" />
+                      Icon="{fa:Icon pentosquare}"
+                      Command="{Binding EditQuestionPackCommand}"/>
             <Separator />
             <MenuItem Header="Fullscreen" InputGestureText="Alt+Enter"
                       Icon="{fa:Icon expand}"

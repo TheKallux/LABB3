@@ -1,6 +1,7 @@
 ﻿using LABB3.ViewModels;
 using LABB3.Views;
 using System.Windows;
+using System.Windows.Input;
 
 namespace LABB3;
 
@@ -24,6 +25,24 @@ public partial class MainWindow : Window
         };
 
         UpdateViewVisibility("Menu");
+
+        RegisterKeyboardShortcuts(viewModel);
+    }
+
+    private void RegisterKeyboardShortcuts(MainWindowViewModel viewModel)
+    {
+        this.InputBindings.Add(new KeyBinding(viewModel.ConfigurationViewModel.AddQuestionCommand,
+            new KeyGesture(Key.Insert)));
+        this.InputBindings.Add(new KeyBinding(viewModel.ConfigurationViewModel.RemoveQuestionCommand,
+            new KeyGesture(Key.Delete)));
+        this.InputBindings.Add(new KeyBinding(viewModel.ConfigurationViewModel.EditPackOptionsCommand,
+            new KeyGesture(Key.O, ModifierKeys.Control)));
+        this.InputBindings.Add(new KeyBinding(viewModel.PlayCommand,
+            new KeyGesture(Key.P, ModifierKeys.Control)));
+        this.InputBindings.Add(new KeyBinding(viewModel.EditQuestionPackCommand,
+            new KeyGesture(Key.E, ModifierKeys.Control)));
+        this.InputBindings.Add(new KeyBinding(viewModel.FullScreenCommand,
+            new KeyGesture(Key.Return, ModifierKeys.Alt)));
     }
 
     private void UpdateViewVisibility(string view)
