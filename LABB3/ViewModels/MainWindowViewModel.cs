@@ -37,11 +37,6 @@ internal class MainWindowViewModel : ViewModelBase
         }
     }
 
-    public string? Answer0 => CurrentAnswers.Count > 0 ? CurrentAnswers[0] : null;
-    public string? Answer1 => CurrentAnswers.Count > 1 ? CurrentAnswers[1] : null;
-    public string? Answer2 => CurrentAnswers.Count > 2 ? CurrentAnswers[2] : null;
-    public string? Answer3 => CurrentAnswers.Count > 3 ? CurrentAnswers[3] : null;
-
     public ConfigurationViewModel? ConfigurationViewModel
     {
         get => _configurationViewModel;
@@ -179,7 +174,7 @@ internal class MainWindowViewModel : ViewModelBase
         var dialog = new SelectPackDialog(QuestionPacks.ToList());
         if (dialog.ShowDialog() == true && dialog.SelectedPack != null)
         {
-            ActivePack = dialog.SelectedPack;
+            DeletePack(dialog.SelectedPack);
         }
     }
 
@@ -220,5 +215,23 @@ internal class MainWindowViewModel : ViewModelBase
     {
         CurrentView = "Player";
         PlayerViewModel.LoadNextQuestion();
+    }
+
+    public void DeletePack(QuestionPackViewModel pack)
+    {
+        if (QuestionPacks.Contains(pack))
+        {
+            
+            if (ActivePack == pack)
+            {
+                ActivePack = QuestionPacks.FirstOrDefault(p => p != pack) ?? null;
+            }
+            
+            QuestionPacks.Remove(pack);
+            SavePacksAsync();
+
+            if (QuestionPacks.Count == 0)
+                ActivePack = null;
+        }
     }
 }
