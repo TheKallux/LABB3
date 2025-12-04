@@ -110,7 +110,7 @@ internal class MainWindowViewModel : ViewModelBase
     private async void LoadPacksAsync()
     {
         var packs = await _packService.LoadPacksAsync();
-
+        System.Diagnostics.Debug.WriteLine($"Loaded packs: {packs.Count}");
         if (packs.Count == 0)
         {
             var defaultPack = new QuestionPack("My Question Pack");
