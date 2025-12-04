@@ -38,9 +38,12 @@ internal class ConfigurationViewModel : ViewModelBase
         {
             activeQuestion = value;
             RaisePropertyChanged();
+            RaisePropertyChanged(nameof(CanEditQuestion));
             RemoveQuestionCommand.RaiseCanExecuteChanged();
         }
     }
+
+    public bool CanEditQuestion => ActiveQuestion != null;
 
     public ConfigurationViewModel(MainWindowViewModel? mainWindowViewModel)
     {

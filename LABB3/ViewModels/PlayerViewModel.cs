@@ -162,6 +162,19 @@ internal class PlayerViewModel : ViewModelBase
         AnswerQuestionCommand = new DelegateCommand(AnswerQuestion);
     }
 
+    public void ResetPlayer()
+    {
+        _timer?.Stop();
+        CurrentQuestionIndex = 0;
+        CorrectCount = 0;
+        CurrentQuestion = null;
+        CurrentAnswers.Clear();
+        SelectedAnswer = null;
+        CorrectAnswerButton = null;
+        WrongAnswerButton = null;
+        TimeRemaining = 0;
+    }
+
     public void LoadNextQuestion()
     {
         CanAnswer = true;
@@ -188,9 +201,7 @@ internal class PlayerViewModel : ViewModelBase
 
     private void ShowResults()
     {
-        ResultView resultWindow = new ResultView(CorrectCount, TotalQuestions);
-        resultWindow.Show();
-        Application.Current.MainWindow?.Close();
+        _mainWindowViewModel?.ShowResults(CorrectCount, TotalQuestions);
     }
 
     private void ShuffleAnswers()

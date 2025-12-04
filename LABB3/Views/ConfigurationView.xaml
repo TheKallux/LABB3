@@ -53,19 +53,24 @@
             <Label Content="Question:" FontSize="20"
                    Margin="0 10 0 0" />
 
-            <TextBox Height="70" Margin="5 9 5 5" Text="{Binding ActiveQuestion.Query, Mode=TwoWay}" />
+            <TextBox Height="70" Margin="5 9 5 5" Text="{Binding ActiveQuestion.Query, Mode=TwoWay}" 
+                     IsEnabled="{Binding CanEditQuestion}" />
 
             <Label Content="Correct answer:" />
-            <TextBox Margin="5" Text="{Binding ActiveQuestion.CorrectAnswer, Mode=TwoWay}" />
+            <TextBox Margin="5" Text="{Binding ActiveQuestion.CorrectAnswer, Mode=TwoWay}" 
+                     IsEnabled="{Binding CanEditQuestion}" />
 
             <Label Content="First incorrect answer:" />
-            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[0], Mode=TwoWay}" />
+            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[0], Mode=TwoWay}" 
+                     IsEnabled="{Binding CanEditQuestion}" />
 
             <Label Content="Second incorrect answer:" />
-            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[1], Mode=TwoWay}" />
+            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[1], Mode=TwoWay}" 
+                     IsEnabled="{Binding CanEditQuestion}" />
 
             <Label Content="Third incorrect answer:" />
-            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[2], Mode=TwoWay}" />
+            <TextBox Margin="5" Text="{Binding ActiveQuestion.IncorrectAnswers[2], Mode=TwoWay}" 
+                     IsEnabled="{Binding CanEditQuestion}" />
         </StackPanel>
     </Grid>
 </UserControl>

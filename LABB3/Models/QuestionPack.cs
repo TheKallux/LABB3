@@ -18,5 +18,5 @@ internal class QuestionPack
     public int TimeLimitInSeconds { get; set; }
 
     public List<Question> Questions { get; set; }
-    
+
 }

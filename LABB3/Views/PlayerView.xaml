@@ -15,13 +15,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding PlayerViewModel.TimeRemaining, StringFormat='Time: {0}s'}"
+        <TextBlock Text="{Binding TimeRemaining, StringFormat='Time: {0}s'}"
                    FontSize="16" Margin="10"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Right"
                    Grid.Column="1" />
 
-        <TextBlock Text="{Binding PlayerViewModel.CurrentQuestion.Query}"
+        <TextBlock Text="{Binding CurrentQuestion.Query}"
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    FontSize="18" FontWeight="Bold"
                    TextWrapping="Wrap"
@@ -29,7 +29,7 @@
                    VerticalAlignment="Top"
                    TextAlignment="Center" />
 
-        <Button Command="{Binding PlayerViewModel.AnswerQuestionCommand}"
+        <Button Command="{Binding AnswerQuestionCommand}"
                 CommandParameter="0"
                 Grid.Row="0" Grid.Column="0"
                 Margin="125,72,10,10"
@@ -38,14 +38,14 @@
                 BorderThickness="2"
                 BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding PlayerViewModel.Answer0Icon}"
-                           Foreground="{Binding PlayerViewModel.Answer0IconColor}"
+                <TextBlock Text="{Binding Answer0Icon}"
+                           Foreground="{Binding Answer0IconColor}"
                            FontSize="16" Margin="0,0,5,0" />
-                <TextBlock Text="{Binding PlayerViewModel.Answer0}" FontSize="16" />
+                <TextBlock Text="{Binding Answer0}" FontSize="16" />
             </StackPanel>
         </Button>
 
-        <Button Command="{Binding PlayerViewModel.AnswerQuestionCommand}"
+        <Button Command="{Binding AnswerQuestionCommand}"
                 CommandParameter="1"
                 Grid.Row="0" Grid.Column="1"
                 Margin="10,72,125,10"
@@ -54,14 +54,14 @@
                 BorderThickness="2"
                 BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding PlayerViewModel.Answer1Icon}"
-                           Foreground="{Binding PlayerViewModel.Answer1IconColor}"
+                <TextBlock Text="{Binding Answer1Icon}"
+                           Foreground="{Binding Answer1IconColor}"
                            FontSize="16" Margin="0,0,5,0" />
-                <TextBlock Text="{Binding PlayerViewModel.Answer1}" FontSize="16" />
+                <TextBlock Text="{Binding Answer1}" FontSize="16" />
             </StackPanel>
         </Button>
 
-        <Button Command="{Binding PlayerViewModel.AnswerQuestionCommand}"
+        <Button Command="{Binding AnswerQuestionCommand}"
                 CommandParameter="2"
                 Grid.Row="1" Grid.Column="0"
                 Margin="125,10,10,72"
@@ -70,14 +70,14 @@
                 BorderThickness="2"
                 BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding PlayerViewModel.Answer2Icon}"
-                           Foreground="{Binding PlayerViewModel.Answer2IconColor}"
+                <TextBlock Text="{Binding Answer2Icon}"
+                           Foreground="{Binding Answer2IconColor}"
                            FontSize="16" Margin="0,0,5,0" />
-                <TextBlock Text="{Binding PlayerViewModel.Answer2}" FontSize="16" />
+                <TextBlock Text="{Binding Answer2}" FontSize="16" />
             </StackPanel>
         </Button>
 
-        <Button Command="{Binding PlayerViewModel.AnswerQuestionCommand}"
+        <Button Command="{Binding AnswerQuestionCommand}"
                 CommandParameter="3"
                 Grid.Row="1" Grid.Column="1"
                 Margin="10,10,125,72"
@@ -86,14 +86,14 @@
                 BorderThickness="2"
                 BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding PlayerViewModel.Answer3Icon}"
-                           Foreground="{Binding PlayerViewModel.Answer3IconColor}"
+                <TextBlock Text="{Binding Answer3Icon}"
+                           Foreground="{Binding Answer3IconColor}"
                            FontSize="16" Margin="0,0,5,0" />
-                <TextBlock Text="{Binding PlayerViewModel.Answer3}" FontSize="16" />
+                <TextBlock Text="{Binding Answer3}" FontSize="16" />
             </StackPanel>
         </Button>
 
-        <TextBlock Text="{Binding PlayerViewModel.QuestionProgress}"
+        <TextBlock Text="{Binding QuestionProgress}"
                    Margin="200,45,200,0"
                    VerticalAlignment="Top" Grid.ColumnSpan="2"
                    TextAlignment="Center" />

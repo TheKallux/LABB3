@@ -2,6 +2,7 @@
 using LABB3.Dialogs;
 using LABB3.Models;
 using LABB3.Services;
+using LABB3.Views;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -73,7 +74,7 @@ internal class MainWindowViewModel : ViewModelBase
     public DelegateCommand PlayCommand { get; set; }
     public DelegateCommand SelectPackCommand { get; set; }
     public DelegateCommand DeletePackCommand { get; set; }
-    public DelegateCommand FullScreenCommand { get ; set; }
+    public DelegateCommand FullScreenCommand { get; set; }
 
 
     public PlayerViewModel? PlayerViewModel
@@ -214,6 +215,7 @@ internal class MainWindowViewModel : ViewModelBase
     private void OnPlay(object? obj)
     {
         CurrentView = "Player";
+        PlayerViewModel.ResetPlayer();
         PlayerViewModel.LoadNextQuestion();
     }
 
@@ -221,17 +223,26 @@ internal class MainWindowViewModel : ViewModelBase
     {
         if (QuestionPacks.Contains(pack))
         {
-            
+
             if (ActivePack == pack)
             {
                 ActivePack = QuestionPacks.FirstOrDefault(p => p != pack) ?? null;
             }
-            
+
             QuestionPacks.Remove(pack);
             SavePacksAsync();
 
             if (QuestionPacks.Count == 0)
                 ActivePack = null;
         }
+    }
+
+    public void ShowResults(int correctCount, int totalQuestions)
+    {
+        ResultWindowViewModel resultViewModel = new ResultWindowViewModel(correctCount, totalQuestions, this);
+        ResultView resultWindow = new ResultView();
+        resultWindow.DataContext = resultViewModel;
+        resultWindow.Owner = Application.Current.MainWindow;
+        resultWindow.ShowDialog();
     }
 }

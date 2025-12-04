@@ -11,22 +11,22 @@
             <MenuItem Header="_New Question Pack"
                       Icon="{fa:Icon plus}"
                       Command="{Binding CreateNewPackCommand}"/>
-            
+
             <MenuItem Header="_Select Question Pack"
                       Icon="{fa:Icon check}"
                       Command="{Binding SelectPackCommand}"/>
-            
+
             <MenuItem Header="_Delete Question Pack"
                       Icon="{fa:Icon minus}"
                       Command="{Binding DeletePackCommand}"/>
-            
+
             <Separator />
-            
+
             <MenuItem Header="Import Questions" InputGestureText="Ctrl+I"
                       Icon="{fa:Icon cloudarrowup}" />
-            
+
             <Separator />
-            
+
             <MenuItem Header="E_xit" InputGestureText="Alt+F4"
                       Icon="{fa:Icon XMark}" />
         </MenuItem>
@@ -35,12 +35,12 @@
             <MenuItem Header="Add Question" InputGestureText="Insert"
                       Icon="{fa:Icon plus}"
                       Command="{Binding ConfigurationViewModel.AddQuestionCommand}"/>
-            
+
             <MenuItem Header="Remove Question" InputGestureText="Delete"
                       Icon="{fa:Icon minus}"
                       Command="{Binding ConfigurationViewModel.RemoveQuestionCommand}"/>
-                      
-            
+
+
             <MenuItem Header="Pack Options" InputGestureText="Ctrl+O"
                       Icon="{fa:Icon pentosquare}"
                       Command="{Binding ConfigurationViewModel.EditPackOptionsCommand}"/>
@@ -50,7 +50,7 @@
             <MenuItem Header="_Play" InputGestureText="Ctrl+P"
                       Icon="{fa:Icon play}"
                       Command="{Binding PlayCommand}"/>
-            
+
             <MenuItem Header="_Edit" InputGestureText="Ctrl+E"
                       Icon="{fa:Icon pentosquare}"
                       Command="{Binding EditQuestionPackCommand}"/>
