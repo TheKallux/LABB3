@@ -206,6 +206,17 @@ internal class PlayerViewModel : ViewModelBase
 
     private void ShuffleAnswers()
     {
+       
+        if (CurrentQuestion == null)
+        {
+            return;
+        }
+        
+        if (CurrentQuestion.IncorrectAnswers == null || CurrentQuestion.IncorrectAnswers.Count() < 3)
+        {
+            return;
+        }
+
         CurrentAnswers.Clear();
 
         var answers = new List<string>
