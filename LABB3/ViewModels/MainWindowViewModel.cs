@@ -63,6 +63,12 @@ internal class MainWindowViewModel : ViewModelBase
         get => _currentView;
         set
         {
+
+            if (_currentView == "Edit" && value != "Edit")
+            {
+                SavePacksAsync();
+            }
+
             _currentView = value;
             RaisePropertyChanged();
         }
